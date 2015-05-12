@@ -1,283 +1,334 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+-- phpMyAdmin SQL Dump
+-- version 4.3.11
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 13, 2015 at 12:54 AM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
--- -----------------------------------------------------
--- Schema titulacion
--- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `titulacion` ;
-CREATE SCHEMA IF NOT EXISTS `titulacion` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `titulacion` ;
-
--- -----------------------------------------------------
--- Table `titulacion`.`alumno`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`alumno` (
-  `id_alumno` INT NOT NULL AUTO_INCREMENT,
-  `numerocuenta` VARCHAR(9) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `apaterno` VARCHAR(45) NOT NULL,
-  `amaterno` VARCHAR(45) NOT NULL,
-  `correo` VARCHAR(45) NOT NULL,
-  `direccion` VARCHAR(45) NOT NULL,
-  `contrasenia` VARCHAR(9) NOT NULL,
-  PRIMARY KEY (`id_alumno`))
-ENGINE = InnoDB;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
--- -----------------------------------------------------
--- Table `titulacion`.`telefonos_alumno`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`telefonos_alumno` (
-  `telelefono` VARCHAR(10) NOT NULL,
-  `alumno_id_alumno` INT NOT NULL,
-  INDEX `fk_telefonos_alumno_alumno_idx` (`alumno_id_alumno` ASC),
-  PRIMARY KEY (`alumno_id_alumno`),
-  CONSTRAINT `fk_telefonos_alumno_alumno`
-    FOREIGN KEY (`alumno_id_alumno`)
-    REFERENCES `titulacion`.`alumno` (`id_alumno`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
+--
+-- Database: `titulacion`
+--
 
--- -----------------------------------------------------
--- Table `titulacion`.`secretaria_tecnica`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`secretaria_tecnica` (
-  `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `correo` VARCHAR(45) NOT NULL,
-  `contrasenia` VARCHAR(45) NOT NULL,
-  `nombre` VARCHAR(45) NULL,
-  `apaterno` VARCHAR(45) NULL,
-  `amaterno` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_usuario`))
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `alumno`
+--
 
--- -----------------------------------------------------
--- Table `titulacion`.`sinodal`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`sinodal` (
-  `id_sinodal` INT NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `apaterno` VARCHAR(45) NOT NULL,
-  `amaterno` VARCHAR(45) NOT NULL,
-  `correo` VARCHAR(45) NOT NULL,
-  `grado` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_sinodal`))
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `alumno` (
+  `id` int(11) NOT NULL,
+  `tipo` int(11) NOT NULL DEFAULT '0' COMMENT '0 siginifica tipo de usuario alumno',
+  `numero_cuenta` int(11) NOT NULL,
+  `nombre` varchar(70) COLLATE utf8_spanish_ci NOT NULL,
+  `apaterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `amaterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
+  `contrasenia` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `direccion` text COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela un usuario alumno';
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `titulacion`.`tutor`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`tutor` (
-  `id_tutor` INT NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `apaterno` VARCHAR(45) NOT NULL,
-  `amaterno` VARCHAR(45) NOT NULL,
-  `grado` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_tutor`))
-ENGINE = InnoDB;
+--
+-- Table structure for table `asignar`
+--
 
+CREATE TABLE IF NOT EXISTS `asignar` (
+  `id_alumno` int(11) NOT NULL COMMENT 'id del alumno al que le fue asignado el sinodal',
+  `id_sinodal` int(11) NOT NULL COMMENT 'id del sinodal asignado al alumno',
+  `voto` tinyint(1) DEFAULT NULL COMMENT '0 - sin votar, 1 - no aprobado, 2 - aprobado'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='sinodales asignados a una tesis y su voto';
 
--- -----------------------------------------------------
--- Table `titulacion`.`telefonos_tutor`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`telefonos_tutor` (
-  `telefonos` VARCHAR(10) NOT NULL,
-  `tutor_id_tutor` INT NOT NULL,
-  INDEX `fk_telefonos_tutor_tutor1_idx` (`tutor_id_tutor` ASC),
-  CONSTRAINT `fk_telefonos_tutor_tutor1`
-    FOREIGN KEY (`tutor_id_tutor`)
-    REFERENCES `titulacion`.`tutor` (`id_tutor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `carrera`
+--
 
--- -----------------------------------------------------
--- Table `titulacion`.`telefonos_sinodal`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`telefonos_sinodal` (
-  `telefono` VARCHAR(10) NULL,
-  `sinodal_id_sinodal` INT NOT NULL,
-  INDEX `fk_telefonos_sinodal_sinodal1_idx` (`sinodal_id_sinodal` ASC),
-  CONSTRAINT `fk_telefonos_sinodal_sinodal1`
-    FOREIGN KEY (`sinodal_id_sinodal`)
-    REFERENCES `titulacion`.`sinodal` (`id_sinodal`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `carrera` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `plan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela una carrera que cursa un alumno';
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `titulacion`.`examen_profesional`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`examen_profesional` (
-  `id_examen` INT NOT NULL AUTO_INCREMENT,
-  `fecha` DATE NULL,
-  `resultado` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_examen`))
-ENGINE = InnoDB;
+--
+-- Table structure for table `cursar`
+--
 
+CREATE TABLE IF NOT EXISTS `cursar` (
+  `id_alumno` int(11) NOT NULL,
+  `id_carrera` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
--- -----------------------------------------------------
--- Table `titulacion`.`cat_estado_proceso`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`cat_estado_proceso` (
-  `id_estado_proceso` INT NOT NULL AUTO_INCREMENT,
-  `descripcion` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`id_estado_proceso`))
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `dt`
+--
 
--- -----------------------------------------------------
--- Table `titulacion`.`proceso_titulacion`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`proceso_titulacion` (
-  `id_proceso` INT NOT NULL AUTO_INCREMENT,
-  `fecha_inicio` TIMESTAMP NOT NULL,
-  `fecha_fin` TIMESTAMP NULL,
-  `id_alumno` INT NOT NULL,
-  `id_examen` INT NOT NULL,
-  `id_secretaria_tecnica` INT NULL,
-  `id_estado` INT NOT NULL,
-  PRIMARY KEY (`id_proceso`),
-  INDEX `fk_proceso_titulacion_alumno1_idx` (`id_alumno` ASC),
-  INDEX `fk_proceso_titulacion_examen_profesional1_idx` (`id_examen` ASC),
-  INDEX `fk_proceso_titulacion_secretaria_tecnica1_idx` (`id_secretaria_tecnica` ASC),
-  INDEX `fk_proceso_titulacion_cat_estado_proceso1_idx` (`id_estado` ASC),
-  CONSTRAINT `fk_proceso_titulacion_alumno1`
-    FOREIGN KEY (`id_alumno`)
-    REFERENCES `titulacion`.`alumno` (`id_alumno`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_proceso_titulacion_examen_profesional1`
-    FOREIGN KEY (`id_examen`)
-    REFERENCES `titulacion`.`examen_profesional` (`id_examen`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_proceso_titulacion_secretaria_tecnica1`
-    FOREIGN KEY (`id_secretaria_tecnica`)
-    REFERENCES `titulacion`.`secretaria_tecnica` (`id_usuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_proceso_titulacion_cat_estado_proceso1`
-    FOREIGN KEY (`id_estado`)
-    REFERENCES `titulacion`.`cat_estado_proceso` (`id_estado_proceso`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `dt` (
+  `id` int(11) NOT NULL,
+  `tipo` int(11) NOT NULL DEFAULT '2' COMMENT '2 siginifica tipo de usuario DT',
+  `nombre` varchar(70) COLLATE utf8_spanish_ci NOT NULL,
+  `apaterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `amaterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
+  `contrasenia` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela un usuario DT';
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `titulacion`.`proceso_titulacion_has_sinodal`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`proceso_titulacion_has_sinodal` (
-  `proceso_titulacion_id_proceso` INT NOT NULL,
-  `sinodal_id_sinodal` INT NOT NULL,
-  PRIMARY KEY (`proceso_titulacion_id_proceso`, `sinodal_id_sinodal`),
-  INDEX `fk_proceso_titulacion_has_sinodal_sinodal1_idx` (`sinodal_id_sinodal` ASC),
-  INDEX `fk_proceso_titulacion_has_sinodal_proceso_titulacion1_idx` (`proceso_titulacion_id_proceso` ASC),
-  CONSTRAINT `fk_proceso_titulacion_has_sinodal_proceso_titulacion1`
-    FOREIGN KEY (`proceso_titulacion_id_proceso`)
-    REFERENCES `titulacion`.`proceso_titulacion` (`id_proceso`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_proceso_titulacion_has_sinodal_sinodal1`
-    FOREIGN KEY (`sinodal_id_sinodal`)
-    REFERENCES `titulacion`.`sinodal` (`id_sinodal`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Table structure for table `examen`
+--
 
+CREATE TABLE IF NOT EXISTS `examen` (
+  `id_alumno` int(11) NOT NULL COMMENT 'id del alumno de este examen',
+  `id_edificio` varchar(40) COLLATE utf8_spanish_ci NOT NULL COMMENT 'id del edificio del lugar',
+  `id_aula` varchar(60) COLLATE utf8_spanish_ci NOT NULL COMMENT 'id del aula del lugar',
+  `fecha` date NOT NULL,
+  `resultado` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'resultado del examen',
+  `mensaje` text COLLATE utf8_spanish_ci COMMENT 'mensaje acerca del resultado, útil si no fue aprobado'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
--- -----------------------------------------------------
--- Table `titulacion`.`tesis`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`tesis` (
-  `id_tesis` INT NOT NULL AUTO_INCREMENT,
-  `titulo` VARCHAR(45) NOT NULL,
-  `fecha_inicio_elaboracion` TIMESTAMP NOT NULL,
-  `fecha_fin_elaboracion` TIMESTAMP NOT NULL,
-  `id_proceso_titulacion` INT NOT NULL,
-  PRIMARY KEY (`id_tesis`),
-  INDEX `fk_tesis_proceso_titulacion1_idx` (`id_proceso_titulacion` ASC),
-  CONSTRAINT `fk_tesis_proceso_titulacion1`
-    FOREIGN KEY (`id_proceso_titulacion`)
-    REFERENCES `titulacion`.`proceso_titulacion` (`id_proceso`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `lugar`
+--
 
--- -----------------------------------------------------
--- Table `titulacion`.`alumno_has_tesis`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`alumno_has_tesis` (
-  `id_alumno` INT NOT NULL,
-  `id_tesis` INT NOT NULL,
-  PRIMARY KEY (`id_alumno`, `id_tesis`),
-  INDEX `fk_alumno_has_tesis_tesis1_idx` (`id_tesis` ASC),
-  INDEX `fk_alumno_has_tesis_alumno1_idx` (`id_alumno` ASC),
-  CONSTRAINT `fk_alumno_has_tesis_alumno1`
-    FOREIGN KEY (`id_alumno`)
-    REFERENCES `titulacion`.`alumno` (`id_alumno`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_alumno_has_tesis_tesis1`
-    FOREIGN KEY (`id_tesis`)
-    REFERENCES `titulacion`.`tesis` (`id_tesis`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `lugar` (
+  `edificio` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `aula` varchar(60) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `titulacion`.`cat_tipo_notificacion`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`cat_tipo_notificacion` (
-  `id_tipo` INT NOT NULL,
-  `descripción` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_tipo`))
-ENGINE = InnoDB;
+--
+-- Table structure for table `notificacion`
+--
 
+CREATE TABLE IF NOT EXISTS `notificacion` (
+  `fecha` date NOT NULL,
+  `id_destinatario` int(11) NOT NULL,
+  `tipo_destinatario` int(11) NOT NULL,
+  `id_remitente` int(11) NOT NULL,
+  `tipo_remitente` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL COMMENT 'revisada o no',
+  `mensaje` text COLLATE utf8_spanish_ci NOT NULL,
+  `tipo` int(11) NOT NULL COMMENT 'tipo de notificacion dependiendo de la estapa del proceso'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela una notificación';
 
--- -----------------------------------------------------
--- Table `titulacion`.`notificacion`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `titulacion`.`notificacion` (
-  `id_notificacion` INT NOT NULL AUTO_INCREMENT,
-  `estado` INT NOT NULL,
-  `correo_alumno` VARCHAR(45) NOT NULL,
-  `fecha_envio` TIMESTAMP NULL,
-  `id_secretaria` INT NOT NULL,
-  `id_alumno` INT NOT NULL,
-  `id_tipo` INT NOT NULL,
-  PRIMARY KEY (`id_notificacion`),
-  INDEX `fk_notificacion_secretaria_tecnica1_idx` (`id_secretaria` ASC),
-  INDEX `fk_notificacion_alumno1_idx` (`id_alumno` ASC),
-  INDEX `fk_notificacion_cat_tipo_notificacion1_idx` (`id_tipo` ASC),
-  CONSTRAINT `fk_notificacion_secretaria_tecnica1`
-    FOREIGN KEY (`id_secretaria`)
-    REFERENCES `titulacion`.`secretaria_tecnica` (`id_usuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_notificacion_alumno1`
-    FOREIGN KEY (`id_alumno`)
-    REFERENCES `titulacion`.`alumno` (`id_alumno`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_notificacion_cat_tipo_notificacion1`
-    FOREIGN KEY (`id_tipo`)
-    REFERENCES `titulacion`.`cat_tipo_notificacion` (`id_tipo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `ntt`
+--
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+CREATE TABLE IF NOT EXISTS `ntt` (
+  `id_alumno` int(11) NOT NULL COMMENT 'id del alumno de esta notificacion de terminación de tesis',
+  `motivo` text COLLATE utf8_spanish_ci NOT NULL COMMENT 'motivo del alumno para decir que ya terminó',
+  `fecha_aprobacion` date NOT NULL,
+  `mensaje_desaprobacion` text COLLATE utf8_spanish_ci NOT NULL COMMENT 'mensaje de la STC para no aprobar'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela una notificación de terminación de tesis';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sinodal`
+--
+
+CREATE TABLE IF NOT EXISTS `sinodal` (
+  `id` int(11) NOT NULL,
+  `tipo` int(11) NOT NULL DEFAULT '3' COMMENT '3 significa tipo de usuario ',
+  `nombre` varchar(70) COLLATE utf8_spanish_ci NOT NULL,
+  `apaterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `amaterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
+  `contrasenia` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `solicitar`
+--
+
+CREATE TABLE IF NOT EXISTS `solicitar` (
+  `id_alumno` int(11) NOT NULL COMMENT 'id del alumno que solicita el sinodal',
+  `id_sinodal` int(11) NOT NULL COMMENT 'id del sinodal solicitado por el alumno'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela una solicitud de un alumno de un sinodal';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sro`
+--
+
+CREATE TABLE IF NOT EXISTS `sro` (
+  `id_alumno` int(11) NOT NULL COMMENT 'id del alumno de este registro de opción',
+  `objetivo` text COLLATE utf8_spanish_ci NOT NULL,
+  `resumen` text COLLATE utf8_spanish_ci NOT NULL,
+  `documento` blob NOT NULL COMMENT 'de anteproyecto',
+  `fecha_aprobacion` date NOT NULL,
+  `mensaje_desaprobacion` text COLLATE utf8_spanish_ci NOT NULL COMMENT 'mensaje de la STC para no aprobar'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela una (solicitud de) registro de opción';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stc`
+--
+
+CREATE TABLE IF NOT EXISTS `stc` (
+  `id` int(11) NOT NULL,
+  `tipo` int(11) NOT NULL DEFAULT '1' COMMENT '1 significa tipo de usuario stc',
+  `nombre` varchar(70) COLLATE utf8_spanish_ci NOT NULL,
+  `apaterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `amaterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
+  `contrasenia` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela un usuario stc';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tesis`
+--
+
+CREATE TABLE IF NOT EXISTS `tesis` (
+  `id_alumno` int(11) NOT NULL COMMENT 'id del alumno de esta tesis',
+  `titulo` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='modela una tesis';
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `alumno`
+--
+ALTER TABLE `alumno`
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `unique` (`numero_cuenta`);
+
+--
+-- Indexes for table `asignar`
+--
+ALTER TABLE `asignar`
+  ADD PRIMARY KEY (`id_alumno`,`id_sinodal`);
+
+--
+-- Indexes for table `carrera`
+--
+ALTER TABLE `carrera`
+  ADD PRIMARY KEY (`id`) COMMENT 'identificador de carrera', ADD UNIQUE KEY `nombre` (`nombre`);
+
+--
+-- Indexes for table `cursar`
+--
+ALTER TABLE `cursar`
+  ADD PRIMARY KEY (`id_alumno`,`id_carrera`);
+
+--
+-- Indexes for table `dt`
+--
+ALTER TABLE `dt`
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `unique` (`correo`);
+
+--
+-- Indexes for table `examen`
+--
+ALTER TABLE `examen`
+  ADD PRIMARY KEY (`id_alumno`);
+
+--
+-- Indexes for table `lugar`
+--
+ALTER TABLE `lugar`
+  ADD PRIMARY KEY (`edificio`,`aula`);
+
+--
+-- Indexes for table `notificacion`
+--
+ALTER TABLE `notificacion`
+  ADD PRIMARY KEY (`fecha`,`id_destinatario`,`id_remitente`);
+
+--
+-- Indexes for table `ntt`
+--
+ALTER TABLE `ntt`
+  ADD PRIMARY KEY (`id_alumno`);
+
+--
+-- Indexes for table `sinodal`
+--
+ALTER TABLE `sinodal`
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `unique` (`correo`);
+
+--
+-- Indexes for table `solicitar`
+--
+ALTER TABLE `solicitar`
+  ADD PRIMARY KEY (`id_alumno`,`id_sinodal`);
+
+--
+-- Indexes for table `sro`
+--
+ALTER TABLE `sro`
+  ADD PRIMARY KEY (`id_alumno`);
+
+--
+-- Indexes for table `stc`
+--
+ALTER TABLE `stc`
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `unique` (`correo`);
+
+--
+-- Indexes for table `tesis`
+--
+ALTER TABLE `tesis`
+  ADD PRIMARY KEY (`id_alumno`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `alumno`
+--
+ALTER TABLE `alumno`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `dt`
+--
+ALTER TABLE `dt`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sinodal`
+--
+ALTER TABLE `sinodal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `stc`
+--
+ALTER TABLE `stc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
