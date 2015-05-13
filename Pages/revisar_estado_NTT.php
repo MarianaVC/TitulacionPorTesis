@@ -1,4 +1,4 @@
-assets/<?php
+<?php
 session_set_cookie_params(0);
 session_start();
 ?>
@@ -38,33 +38,54 @@ session_start();
 				$titulo = "Mi tesis";
 				$aprobada = false;
 				$fecha_aprobacion = date('Y-m-d');
+				//$fecha_aprobacion = null;
 				//mensaje que dejó la STC como observación del por qué no se aprobó la NTT
 				$mensaje_desaprobacion="Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido.";
 				$ntt = $arrayName = array(0 => $id_alumno, 1 => $titulo, 2 => $aprobada, 3 => $fecha_aprobacion, 4 => $mensaje_desaprobacion);
-				?>
-					<ul class="list-group">
-						<li class="list-group-item list-group-item-info active">Título de Tesis:</li>
-						<li class="list-group-item list-group-item-default"><?php echo $titulo ?></li>
-					</ul>
-					<?php
-				if($aprobada){
-					echo "Tu Notificación de Terminación de Tesis ha sido aprobada el ".$fecha_aprobacion;
+				$mensaje;
+				$color;
+				if($fecha_aprobacion == null){
+					$mensaje = "Sin revisión";
+					$color = "default";
 				}
 				else{
-					?>
-					Tu Notificación de Terminación de Tesis no ha sido aprobada.
-					<ul class="list-group">
-						<li class="list-group-item list-group-item-danger">Motivos de la desaprobación:</li>
-						<li class="list-group-item list-group-item-default"><?php echo $mensaje_desaprobacion ?></li>
-					</ul>
-					<?php
+					if($aprobada){
+						$mensaje = "Aprobada el día ".$fecha_aprobacion;
+						$color = "success";
+					}
+					else{
+						$mensaje = "No aprobada el día ".$fecha_aprobacion;
+						$color = "danger";
+					}
 				}
+
 				?>
-			</div>
-		</div>
-		<div class="container">
-			<?php require_once 'footer.php';?>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-info active">Título de Tesis:</li>
+					<li class="list-group-item list-group-item-default"><?php echo $titulo; ?></li>
+				</ul>
+
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-info active">Estado de aprobación:</li>
+					<li class="list-group-item list-group-item-<?php echo $color ?>"><?php echo $mensaje ?></li>
+				</ul>
+			<?php
+			if($aprobada){
+			}
+			else{
+				?>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-info active">Motivos de la desaprobación:</li>
+					<li class="list-group-item list-group-item-default"><?php echo $mensaje_desaprobacion ?></li>
+				</ul>
+				<?php
+			}
+			?>
 		</div>
 	</div>
+	<div class="container">
+		<?php require_once 'footer.php';?>
+	</div>
+</div>
 </body>
 </html>
