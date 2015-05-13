@@ -1,7 +1,7 @@
 <?php
 session_set_cookie_params(0);
 session_start();
-$_SESSION['id_alumno']=0;
+$_SESSION['id_alumno']=0;//post porque esta página la puede ver el alumno o la STC
 ?>
 <!DOCTYPE html>
 <!--Inicia documento html-->

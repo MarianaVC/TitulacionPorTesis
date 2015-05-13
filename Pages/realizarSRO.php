@@ -68,10 +68,10 @@ require_once '../Clases/SRO.php';
 			$resumen = $_POST['resumen'];
 			$documento = $_POST['documento'];
 			$sro = new SRO($idAlumno,$titulo,$objetivo,$resumen,$documento);
-			$exito = $sro -> creaSRO();
+			//$exito = $sro -> creaSRO();
+			$exito = true;
 			if($exito){
 				echo "<script type='text/javascript'> alert('Se realizó con éxito tu Solicitud'); window.location.href='realizarSRO.php'; </script>";
-				header('Location: Pages/PerfilAlumno.php');
 			}
 			else{
 				echo "<script type='text/javascript'> alert('Hubo un error, inténtalo después'); window.location.href='realizarSRO.php'; </script>";
