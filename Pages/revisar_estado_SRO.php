@@ -1,6 +1,7 @@
 <?php
 session_set_cookie_params(0);
 session_start();
+$_SESSION['id_alumno']=0;
 ?>
 <!DOCTYPE html>
 <!--Inicia documento html-->
@@ -24,38 +25,38 @@ session_start();
 			<div class="row">
 				<div class="col-md-offset-0 col-md-10">
 					<div class="page-header position-relative">
-						<h2>Estado de aprobación de Notificación de Terminación de Tesis.</h2>
+						<h2>Estado de aprobación de Registro de Opción.</h2>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-offset-0 col-md-10">
-				Aquí puedes verificar si tu Notificación de Terminación de Tesis ha sido aprobada.<br>
+				Aquí puedes verificar si tu Solicitud de Registro de Opción de Titulación ha sido aprobada.<br>
 				<?php
-				//$id_alumno = $_SESSION['id_alumno'];
-				$id_alumno = 0;
+				$id_alumno = $_SESSION['id_alumno'];
 				$nombre_alumno = "Juan Pérez";
-				//hacemos una consulta en la BD para determinar los datos de la NTT del alumno
-				//la ntt tiene la forma (id_alumno, titulo, estado_aprobacion, fecha_aprobacion, mesaje)
+				//hacemos una consulta en la BD para determinar los datos de la SRO del alumno
+				//la sro tiene la forma (id_alumno, objetivo, resumen, documento, fecha_revision, mesaje_desaprobacion, aprobado)
 				$titulo = "Mi tesis";
-				$aprobada = false;
-				$fecha_aprobacion = date('Y-m-d');
-				//$fecha_aprobacion = null;
+				$aprobada = true;
+				$fecha_revision = date('Y-m-d');
+				$objetivo = "User contributions in the form of posts, comments, and votes are essential to the success of online communities.";
+				//$fecha_revision = null;
 				//mensaje que dejó la STC como observación del por qué no se aprobó la NTT
 				$mensaje_desaprobacion="Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido. Te faltó especificar los motivos por los que consideras que tu trabajo ha conluido.";
-				$ntt = $arrayName = array(0 => $id_alumno, 1 => $titulo, 2 => $aprobada, 3 => $fecha_aprobacion, 4 => $mensaje_desaprobacion);
+				$resumen = "User contributions in the form of posts, comments, and votes are essential to the success of online communities. However, allowing user participation also invites undesirable behavior such as trolling. In this paper, we characterize antisocial behavior in three large online discussion communities by analyzing users who were banned from these communities. We find that such users tend to concentrate their efforts in a small number of threads, are more likely to post irrelevantly, and are more successful at garnering responses from other users. Studying the evolution of these users from the moment they join a community up to when they get banned, we find that not only do they write worse than other users over time, but they also become increasingly less tolerated by the community. Further, we discover that antisocial behavior is exacerbated when community feedback is overly harsh. Our analysis also reveals distinct groups of users with different levels of antisocial behavior that can change over time. We use these insights to identify antisocial users early on, a task of high practical importance to community maintainers.";
 				$mensaje;
 				$color;
-				if($fecha_aprobacion == null){
+				if($fecha_revision == null){
 					$mensaje = "Sin revisión";
 					$color = "default";
 				}
 				else{
 					if($aprobada){
-						$mensaje = "Aprobada el día ".$fecha_aprobacion;
+						$mensaje = "Aprobada el día ".$fecha_revision;
 						$color = "success";
 					}
 					else{
-						$mensaje = "No aprobada el día ".$fecha_aprobacion;
+						$mensaje = "No aprobada el día ".$fecha_revision;
 						$color = "danger";
 					}
 				}
@@ -64,6 +65,14 @@ session_start();
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-info active">Título de tesis y autor:</li>
 					<li class="list-group-item list-group-item-default"><?php echo "\"".$titulo."\" por ".$nombre_alumno; ?></li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-info active">Objetivo:</li>
+					<li class="list-group-item list-group-item-default"><?php echo $objetivo ?></li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-info active">Resumen:</li>
+					<li class="list-group-item list-group-item-default"><?php echo $resumen ?></li>
 				</ul>
 
 				<ul class="list-group">
