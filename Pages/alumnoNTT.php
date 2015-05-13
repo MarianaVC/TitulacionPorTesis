@@ -37,140 +37,157 @@ require_once '../Clases/Notificacion.php';
 		<link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
 		<!--inline styles related to this page-->
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
-		<body>
-			<div class="container">
-				<?php require_once 'navbarST.php';?>
-				<div class="main-container ">
-					<div class="sidebar" id="sidebar">
-						<ul class="nav nav-list">
-							<li class="active">
-								<a href="PerfilST.php">
-									<i class="icon-dashboard"></i>
-									<span class="menu-text"> Inicio </span>
-								</a>
-							</li>
-							<li>
-								<a href="NuevoDT.php">
-									<i class="icon-bolt"></i>
-									<span class="menu-text"> Nuevo DT </span>
-								</a>
-							</li>
-							<li>
-								<a href="NuevoSinodal.php" class="dropdown-toggle">
-									<i class="icon-bolt"></i>
-									<span class="menu-text"> Nuevo Sinodal </span>
-									<b class="arrow icon-angle-down"></b>
-								</a>
-							</li>
-							<li>
-								<a href="RevisarSRO.php">
-									<i class="icon-list"></i>
-									<span class="menu-text"> Revisar SRO </span>
-								</a>
-							</li>
-							<li>
-								<a href="RevisarNTT.php" class="dropdown-toggle">
-									<i class="icon-edit"></i>
-									<span class="menu-text"> Revisar NTT </span>
-									<b class="arrow icon-angle-down"></b>
-								</a>
-							</li>
-							</ul><!--/.nav-list-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="assets/js/jquery-1.11.2.js"></script>
+		<script src="assets/js/bootstrap.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<?php require_once 'navbarST.php';?>
+			<!--Main-->
+			<div class="main-container">
+				<!--Comienza el sidebar-->
+				<div class="sidebar" id="sidebar">
+					<ul class="nav nav-list">
+						<li class="active">
+							<a href="PerfilST.php">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> Inicio </span>
+							</a>
+						</li>
+						<li>
+							<a href="NuevoDT.php">
+								<i class="icon-bolt"></i>
+								<span class="menu-text"> Nuevo DT </span>
+							</a>
+						</li>
+						<li>
+							<a href="NuevoSinodal.php" class="dropdown-toggle">
+								<i class="icon-bolt"></i>
+								<span class="menu-text"> Nuevo Sinodal </span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+						</li>
+						<li>
+							<a href="RevisarSRO.php">
+								<i class="icon-list"></i>
+								<span class="menu-text"> Revisar SRO </span>
+							</a>
+						</li>
+						<li>
+							<a href="RevisarNTT.php" class="dropdown-toggle">
+								<i class="icon-edit"></i>
+								<span class="menu-text"> Revisar NTT </span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+						</li>
+					</ul>
+					</div><!--Termina el sidebar-->
+					</div><!--Termina Main container-->
+					</div><!--Termina container principal-->
+					<div class="page-content"><!--Comienza page content-->
+					<div class="row-fuid"><!--Row fluid-->
+					<div class="span9" style="padding-left:500px">
+						<div id="user-profile-1" class="user-profile row-fluid" >
+							<div class="span6 center">
+								<span class="profile-picture">
+									<img id="avatar" class="editable" alt="Alex's Avatar" src="assets/avatars/profile-pic.jpg" />
+								</span>
+								<div class="space-4"></div>
+								<div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
+									<div class="inline position-relative">
+										<a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+											<i class="icon-circle light-green middle"></i>
+											&nbsp;
+											<span class="white middle bigger-120">Juan Alberto Rámirez</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="space-8">
+								<div class="profile-contact-info">
+									<div class="profile-contact-links align-left">
+										<a class="btn btn-link" href="#">
+											<i class="icon-envelope bigger-120 pink"></i>
+											Enviar Notificacion
+										</a>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="page-content">
-							<div class="row-fluid">
-								<div class="span9">
-									<div class="row-fluid">
-										<div id="user-profile-1" class="user-profile row-fluid" style="padding-left:200px">
-											<div class="span6 center">
-												<div>
-													<span class="profile-picture">
-														<img id="avatar" class="editable" alt="Alex's Avatar" src="assets/avatars/profile-pic.jpg" />
-													</span>
-													<div class="space-4"></div>
-													<div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
-														<div class="inline position-relative">
-															<a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
-																<i class="icon-circle light-green middle"></i>
-																&nbsp;
-																<span class="white middle bigger-120">Juan Alberto Rámirez</span>
-															</a>
-														</div>
-													</div>
-												</div>
-												<br>
-												<div class="space-8"></div>
-												<div class="profile-contact-info">
-													<div class="profile-contact-links align-left">
-														<a class="btn btn-link" href="#">
-															<i class="icon-envelope bigger-120 pink"></i>
-															Enviar Notificacion
-														</a>
-													</div>
-												</div>
-												<br>
-												<div class="row-fluid">
-													<div class="row-fluid">
-														<div class="span12 widget-container-span">
-															<div class="widget-box" >
-																<div class="widget-header header-color-blue">
-																	<h5 class="bigger lighter">
-																	<i class="icon-table"></i>
-																	Esto del trámite de titulacion																	</h5>
-																	<div class="widget-toolbar widget-toolbar-light no-border">
-																	</div>
-																</div>
-																<div class="widget-body">
-																	<div class="widget-main no-padding">
-																		<table class="table table-striped table-bordered table-hover">
-																			<thead>
-																				<tr>
-																					<th>
-																						<i class="icon-check"></i>
-																						Campo
-																					</th>
-																					<th>
-																					<i class="icon-check"></i>											Informacion					</th>
-																				</thead>
-																				<tbody>
-																					<tr>
-																						<td class="">Títulos de Tesis</td>
-																						<td class="">"Titulo chido"</td>
-																					</tr>
-																					<tr>
-																						<td class="">Nombre:</td>
-																						
-																						<td class="">Juan Alberto Ramirez Mora</td>
-																					</tr>
-																					<tr>
-																						<td>Número de cuenta:</td>
-																						<td>341754788</td>
-																					</tr>
-																					<tr>
-																						<td>Estado de trámite:</td>
-																						<td>Notificación de tesis terminada</td>
-																					</tr>
-																				</tbody>
-																			</table>
-																		</div>
-																	</div>
-																	<br>
-																	<div class="widget body">
-																		<form action="" method="get" accept-charset="utf-8">
-																			<button type="submit" class="btn btn-success">Aprobar</button>			<button type="submit" class="btn btn-danger">No Aprobar</button>
-																		</form>
-																		
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="container">
-											<?php require_once'footer.php' ?>
-										</div>
-									</body>
-								</html>
+					</div>
+					<div class="span8 widget-container-span" style="padding-left:400px">
+						<div class="widget-box" >
+							<div class="widget-header header-color-blue">
+								<h5 class="bigger lighter">
+								<i class="icon-table"></i>
+								Estado del trámite de titulacion
+								</h5>
+								<div class="widget-toolbar widget-toolbar-light no-border">
+								</div>
+							</div>
+							<div class="widget-body">
+								<div class="widget-main no-padding">
+									<table class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>
+													<i class="icon-check"></i>
+													Campo
+												</th>
+												<th>
+												<i class="icon-check"></i>Informacion</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="">Títulos de Tesis</td>
+												<td class="">"Titulo chido"</td>
+											</tr>
+											<tr>
+												<td class="">Nombre:</td>
+												<td class="">Juan Alberto Ramirez Mora</td>
+											</tr>
+											<tr>
+												<td>Número de cuenta:</td>
+												<td>341754788</td>
+											</tr>
+											<tr>
+												<td>Correo Electrónico:</td>
+												<td>juan@gmail.com</td>
+											</tr>
+											<tr>
+												<td>Teléfono:</td>
+												<td>56613491</td>
+											</tr>
+											<tr>
+												<td>Licenciatura:</td>
+												<td>Licenciatura en Matemáticas Aplicadas</td>
+											</tr>
+											<tr>
+												<td>Estado de trámite:</td>
+												<td><strong>Notificación de terminación de tesis terminada <i class ="icon-check"></i></strong></td>
+											</tr>
+											<tr>
+												<td>Solicitud de Registro de Opción</td>
+												<td><a href="a"><img id="pf" src="../Imagenes/pdf.jpg" /></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="widget body" style="padding-left: 250px">
+							<form action="" method="get" accept-charset="utf-8">
+								<button type="submit" class="btn btn-success">Aprobar</button>
+								<button type="submit" class="btn btn-danger">No Aprobar</button>
+							</form>
+						</div>
+					</div>
+					</div><!--Row fluid-->
+					</div><!--Termina page content-->
+					<div class="container">
+						<?php require_once'footer.php' ?>
+					</div>
+				</body>
+			</html>
