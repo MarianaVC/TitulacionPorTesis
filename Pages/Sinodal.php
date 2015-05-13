@@ -8,9 +8,9 @@ session_start();
 <head>
 <meta charset = "UTF-8">
 <title>Asignacion de Sinodales</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<script src="Pages/js/jquery-2.1.4.min.js"></script>
-<script src="Pages/js/vistaSinodal.js" ></script>
+<link href="assets/css/bootstrap.css" rel="stylesheet"/>
+<script src="assets/js/jquery-2.0.3.min.js"></script>
+<script src="assets/js/vistaSinodal.js" ></script>
 <style>
 .icon-success {color: #5CB85C;}
 .centrado{margin-left: auto;margin-right: auto;}
@@ -21,7 +21,7 @@ session_start();
 
 <?php
 //Solo para hacer prueba de sesion; 
-$_SESSION['correo'] = "enrique@..";  
+$_SESSION['correo'] = "enrique@92espartan@hotmail.com";  
 $_SESSION['nombre'] = "Jose";
 ?>
 
@@ -32,11 +32,8 @@ if(strcmp($_SESSION["correo"],"")==0)
 ?>
 <header>
  <div class ='container'>
-                <?php require_once 'header2.php'; ?>
+                <?php require_once 'header.php'; ?>
             </div>
-<div class ='container'>
-                <?php require_once 'header3.php'; ?>
-            </div>            
 </header>
 
 <div style = "margin: 3% 7% 7% 7%;">
@@ -56,7 +53,7 @@ if(strcmp($_SESSION["correo"],"")==0)
 
 </div>
 <div class="container">
-                    <?php require_once 'footer2.php';?>
+                    <?php require_once 'footer.php';?>
                 </div>
 </body>
 
