@@ -1,5 +1,5 @@
 <?php
-
+require_once '../Clases/Mensaje.php';
 session_start();
 ?>
 
@@ -11,6 +11,7 @@ session_start();
 <title>Asignacion de Sinodales</title>
 <link href="assets/css/bootstrap.css" rel="stylesheet"/>
 <script src="assets/js/jquery-2.0.3.min.js"></script>
+<script src="assets/js/notificacion.js" ></script>
 </head>
 <body>
 
@@ -28,26 +29,27 @@ if(strcmp($_SESSION["numero_cuenta"],"")==0)
 ?>
 <header>
  <div class ='container'>
-                <?php require_once 'header.php'; ?>
-            </div>
+ <?php require_once 'header.php'; ?>
+ </div>
 </header>
 
-<div class = "container" style = "margin-top: 5%; padding-bottom:17%;">
-<h2 style = "margin-top: 1%; padding-bottom:2%;">Estas son las notificaciones pendientes</h2>
+<div class = "container" style = "margin-top: 5%; padding-bottom:10%;">
+<h2 style = "margin-top: 1%; padding-bottom:2%;">Centro de notificaciones</h2>
 
 <div class = "row">
   <div class="col-md-2">
-  <table class='table table-hover table-bordered' id = 'tabla'>
-  <tr>
-  <td>
-  Secretaria
-  </td>
-  </tr>
-  <tr>
-  <td>
-  Alumno
-  </td>
-  </tr>
+  <p class = "container"> Notificaciones pendientes<span class='badge' id = 'span'>4</span></p>
+  <table class='table table-hover table-bordered' id = 'tablaPendiente'>
+  <?php 
+  $notificaciones = new Mensaje();
+  $remitente = $notificaciones -> getRemitente();
+  $tabla = "";
+   for($t=0;$t<count($remitente)-1;$t++){
+  $tabla.="<tr class = 'pendiente' data-id = '".$t."'> <td>".$remitente[$t]."</td></tr>";
+  }
+  echo $tabla;
+
+  ?>
   </table>
   </div>
   <div class="col-md-6">
@@ -57,21 +59,19 @@ if(strcmp($_SESSION["numero_cuenta"],"")==0)
   
 
   <p id = "mensaje" class ="text-center">Todavia no estas registrado</p>
+  
+ 
+
 
   </div>
   </div>
   <div class="col-md-2">
-  <table class='table table-hover table-bordered' id = 'tabla'>
-  <tr>
-  <td>
-  Secretaria
-  </td>
-  </tr>
-  <tr>
-  <td>
-  Alumno
-  </td>
-  </tr>
+  <p class = "container"> Notificaciones leidas</p>
+  
+  <table class='table table-hover table-bordered' id = 'tablaLeido'>
+  <?php
+  echo "<tr class = 'leido'> <td>".$remitente[2]."</td></tr>";
+   ?>
   </table>
   </div>
   </div>

@@ -23,13 +23,15 @@ $("#alumnos").click(function(event) {
 	
 });
 $("#cerrarSesion").click(function(event) {
-	window.location = "index.php";
+	window.location = "../ PerfilAlumno.php";
 });
 
 });
 
 function confirmar(){
-	console.log("Hola");
+	$("#contenido").empty();
+    $("#contenido").append('<h2>Por el momento no hay alumnos pendientes</h2>');
+    $("#span").text('0');
 };
 function alumnos(){
 	$.ajax({
@@ -43,7 +45,6 @@ function alumnos(){
             }
         });
 }
-
 function carga(){
 	$.ajax({
             url : 'SinodalServer.php',

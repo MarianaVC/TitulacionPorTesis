@@ -28,12 +28,12 @@ $_SESSION['nombre'] = "Jose";
 <?php 
 //Ya esta cargado de la base de datos solo es validar no vacios
 if(strcmp($_SESSION["correo"],"")==0)
-    header('Location: index.php');
+    header('Location: ../index.php');
 ?>
 <header>
  <div class ='container'>
-                <?php require_once 'header.php'; ?>
-            </div>
+ <?php require_once 'header.php'; ?>
+ </div>
 </header>
 
 <div style = "margin: 3% 7% 7% 7%;">
@@ -48,13 +48,14 @@ if(strcmp($_SESSION["correo"],"")==0)
 
                               
  
-<div id = "contenido">
+<div id = "contenido" class="table-responsive">
 
 
 </div>
+</div>
 <div class="container">
-                    <?php require_once 'footer.php';?>
-                </div>
+<?php require_once 'footer.php';?>
+</div>
 </body>
 
 </html>
