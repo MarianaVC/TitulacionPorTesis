@@ -1,4 +1,5 @@
 <?php
+require_once '../Clases/Sinodal.php';
 session_start();
 ?>
 
@@ -45,24 +46,23 @@ if(strcmp($_SESSION["numero_cuenta"],"")==0)
 </header>
 
 <div style = "margin: 1% 7% 2% 7%;">
-<h2 class= "container-fluid">Selecciona tus sinodales</h2>
-<h4 class= "container-fluid" style = "margin: 0% 3% 3% 3%">(Maximo 5)</h4>
+<h2>Selecciona tus sinodales<small> (Maximo 5)</small></h2>
 
 <?php
-  $filas = 6; // tamaño de la tabla sinodales
   $noCuenta = Array();
   $nombre = Array();
-  array_push($noCuenta,("308299966"));
-  array_push($nombre,("Jose enrique Vargas Benitez"));
+  $sinodal = new Sinodal("Jose","308299966");
+  $noCuenta = $sinodal -> getNumeroCuenta();
+  $nombre = $sinodal -> getNombres();
   ?>                                                   
  
 <div style = "margin : 3%;padding : 0% 15% 0% 0%;">
 <table class="table table-hover table table-bordered" id = "tabla">
  <?php
  //Iniciamos el bucle de las filas
- for($t=0;$t<$filas;$t++){
-  echo "<tr class = 'fila'> <td>".$noCuenta[0].$t."</td>";
-  echo "<td>".$nombre[0]."</td>";
+ for($t=0;$t<count($noCuenta);$t++){
+  echo "<tr class = 'fila'> <td>".$noCuenta[$t]."</td>";
+  echo "<td>".$nombre[$t]."</td>";
   echo "<td></td></tr>";
   }
  ?>
@@ -73,8 +73,8 @@ if(strcmp($_SESSION["numero_cuenta"],"")==0)
   Enviar
 </button>
 <div class="container">
-                    <?php require_once 'footer.php';?>
-                </div>
+<?php require_once 'footer.php';?>
+</div>
 
 </body>
 
