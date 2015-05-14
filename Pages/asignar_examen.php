@@ -32,7 +32,7 @@ require_once '../Clases/Examen.php';
 					</div>
 				</div>
 			</div>
-			<div class="col-md-offset-0 col-md-10">
+			<div class="col-md-offset-2 col-md-8">
 				Proporciona los siguientes datos para asignar lugar y fecha de examen.
 				<form class="form" method="post">
 					<div class="panel-body">
@@ -40,8 +40,10 @@ require_once '../Clases/Examen.php';
 						<input type="text" id="num_cta_alumno" name='num_cta_alumno' class="form-control" placeholder="Número de 9 dígitos" required autofocus>
 						<div id="e_num_cta_alumno"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
 						Lugar:
-						<input type="text" id="lugar" name='lugar' class="form-control" placeholder="Aula o auditorio" required autofocus>
-						<div id="e_lugar"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
+						<input type="text" id="edificio" name='edificio' class="form-control" placeholder="Edificio" required autofocus>
+						<div id="e_edificio"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
+						<input type="text" id="aula" name='aula' class="form-control" placeholder="Aula o auditorio" required autofocus>
+						<div id="e_aula"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
 						Fecha:
 						<input type="date" id="fecha" name='fecha' class="form-control" placeholder="AAAA-MM-DD" required autofocus>
 						<div id="e_fecha"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
