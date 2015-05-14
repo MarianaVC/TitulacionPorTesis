@@ -35,7 +35,7 @@ require_once '../Clases/SRO.php';
 					</div>
 				</div>
 			</div>
-			<div class="col-md-offset-0 col-md-10">
+			<div class="col-md-offset-2 col-md-8">
 				Proporciona los siguientes datos para realizar tu Solicitud de Registro de Opción.
 				<form class="form" method="post">
 					<div class="panel-body">
@@ -44,13 +44,13 @@ require_once '../Clases/SRO.php';
 						<input type="text" id="titulo_de_tesis" name='titulo_de_tesis' class="form-control" placeholder="Título de tesis" required autofocus>
 						<div id="e_titulo_de_tesis"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
 						Objetivo:
-						<input type="text" id="objetivo" name='objetivo' class="form-control" placeholder="Objetivo" required autofocus>
+						<textarea type="text" id="objetivo" name='objetivo' class="form-control" placeholder="Objetivo" rows="7" required autofocus></textarea>
 						<div id="e_objetivo"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
 						Resumen:
-						<input type="text" id="resumen" name='resumen' class="form-control" placeholder="Resumen" required autofocus>
+						<textarea type="text" id="resumen" name='resumen' class="form-control" placeholder="Resumen" rows="7" required autofocus></textarea>
 						<div id="e_resumen"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
 						Documento de anteproyecto:
-						<input type="file" id="documento" name='documento' class="file" placeholder="Documento" required autofocus>
+						<input type="file" id="documento" name='documento' class="btn btn-default" placeholder="Documento" required autofocus>
 						<div id="e_documento"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
 						<div class="panel-footer text-center">
 							<button id='boton_SRO' class="btn btn-primary " type="submit">Aceptar</button>

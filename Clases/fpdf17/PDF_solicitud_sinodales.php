@@ -1,6 +1,7 @@
 <?php
 require('fpdf.php');
- 
+session_set_cookie_params(0);
+session_start();
 class PDF extends FPDF
 {
 //Page header
@@ -31,8 +32,8 @@ function Footer()
 }
  
 //Instanciation of inherited class
-//$sinodales = $_SESSION['sinodales'];
-$sinodales = array(0 => "sinodal 0",1 => "sinodal 1",2 => "sinodal 2",3 => "sinodal 3",4 => "sinodal 4");
+$sinodales = $_SESSION['sinodales'];
+//$sinodales = array(0 => "sinodal 0",1 => "sinodal 1",2 => "sinodal 2",3 => "sinodal 3",4 => "sinodal 4");
 $pdf=new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();

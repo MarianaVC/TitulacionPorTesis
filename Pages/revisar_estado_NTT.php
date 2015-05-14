@@ -28,7 +28,7 @@ session_start();
 					</div>
 				</div>
 			</div>
-			<div class="col-md-offset-0 col-md-10">
+			<div class="col-md-offset-2 col-md-8">
 				Aquí puedes verificar si tu Notificación de Terminación de Tesis ha sido aprobada.<br>
 				<?php
 				//$id_alumno = $_SESSION['id_alumno'];

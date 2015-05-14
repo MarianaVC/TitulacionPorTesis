@@ -36,7 +36,7 @@ session_start();
 					</div>
 				</div>
 			</div>
-			<div class="col-md-offset-0 col-md-10">
+			<div class="col-md-offset-2 col-md-8">
 				Aquí puedes ver la lista de los sinodales aginados a tu trabajo de tesis e imprimir tu Solicitud de Sinodales para que la firmen y la entregues a la Secretaría Técnica de Carrera.<br><br>
 				<?php
 				$aprobada = true;//hay que determinar esto bien en el sistema
@@ -44,7 +44,7 @@ session_start();
 					//echo "Tu Solicitud de Sinodales ha sido aprobada";
 				}
 				//hacemos una consulta en la BD para determinar cuáles sinodales están asignados a la tesis del alumno
-				$sinodales = array(0 => "sinodal 0",1 => "sinodal 1",2 => "sinodal 2",3 => "sinodal 3",4 => "sinodal 4");
+				$sinodales = array(0 => "Hanna Jadwiga Oktaba",1 => "José David Flores Peñaloza",2 => "German Ernesto Zapata Ledesma",3 => "Gabriela Martínez Quezada",4 => "Miguel Angel Piña Avelino");
 				$_SESSION['sinodales']=$sinodales;
 				$titulo = "Solicitud de Sinodales";
 				$contenido = "";

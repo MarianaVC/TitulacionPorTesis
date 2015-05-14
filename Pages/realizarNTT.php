@@ -36,13 +36,13 @@ $_SESSION['id_alumno']=0;
 					</div>
 				</div>
 			</div>
-			<div class="col-md-offset-0 col-md-10">
+			<div class="col-md-offset-2 col-md-8">
 				Explica por qué consideras que has concluido tu trabajo.
 				<form class="form" method="post">
 					<div class="panel-body">
 						<label for="motivos" class="sr-only">Motivos</label>
 						Motivos:
-						<input type="textarea" id="motivos" name='motivos' class="form-control" placeholder="Explicación detallada" required autofocus>
+						<textarea type="textarea" id="motivos" name='motivos' class="form-control" placeholder="Explicación detallada" rows="10" required autofocus></textarea>
 						<div id="e_titulo_de_tesis"></div><!--Aquí se muestran los mensajes de error para este input(ver validadorSRO.js)-->
 						<div class="panel-footer text-center">
 							<button id='boton_SRO' class="btn btn-primary " type="submit">Aceptar</button>

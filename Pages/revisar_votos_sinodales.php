@@ -28,7 +28,7 @@ session_start();
 					</div>
 				</div>
 			</div>
-			<div class="col-md-offset-0 col-md-10">
+			<div class="col-md-offset-2 col-md-8">
 				Aquí puedes consultar los sinodales que han votado en aprobación de la tesis.<br>
 				<?php
 				//$id_alumno = $_SESSION['id_alumno'];
@@ -37,9 +37,9 @@ session_start();
 				//hacemos una consulta en la BD para determinar los datos de los sinodales asignados
 				//a la tesis del alumno
 				$titulo = "Mi tesis";
-				$sinodales = array(0 => "sinodal 0",1 => "sinodal 1",2 => "sinodal 2",3 => "sinodal 3",4 => "sinodal 4");
-				$apobaciones = array(0=>true,1=>false,2=>true,3=>true,4=>false);
-				$fechas_aprobacion = array(0=>date('Y-m-d'),1=>null,2=>date('Y-m-d'),3=>date('Y-m-d'),4=>null);
+				$sinodales = array(0 => "Hanna Jadwiga Oktaba",1 => "José David Flores Peñaloza",2 => "German Ernesto Zapata Ledesma",3 => "Gabriela Martínez Quezada",4 => "Miguel Angel Piña Avelino");
+				$aprobaciones = array(0=>true,1=>false,2=>true,3=>true,4=>null);
+				$fechas_aprobacion = array(0=>date('Y-m-d'),1=>date('Y-m-d'),2=>date('Y-m-d'),3=>date('Y-m-d'),4=>null);
 				?>
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-info active">Alumno:</li>
@@ -51,21 +51,29 @@ session_start();
 				</ul>
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-info active">
-						<span class="badge">Fecha de aprobación</span>
+						<span class="badge">Fecha de revisión</span>
 						Votos de sinodales:
 					</li>
 					<?php
 					for($i=0;$i<5;$i++){
+						$badge;
 						$color;
-						if($fechas_aprobacion[$i]){
-							$color="success";
+						if($fechas_aprobacion[$i] == null){
+							$badge = "sin revisar";
+							$color="default";
 						}
 						else{
-							$color="danger";
+							$badge=$fechas_aprobacion[$i];
+							if($aprobaciones[$i] == true){
+								$color="success";
+							}
+							else{
+								$color="danger";
+							}
 						}
 					?>
 					<li class="list-group-item list-group-item-<?php echo $color ?>">
-						<span class="badge"><?php echo $fechas_aprobacion[$i] ?></span>
+						<span class="badge"><?php echo $badge ?></span>
 						<?php echo $sinodales[$i] ?>
 					</li>
 					<?php

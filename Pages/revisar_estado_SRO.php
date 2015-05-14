@@ -29,7 +29,7 @@ $_SESSION['id_alumno']=0;//post porque esta página la puede ver el alumno o la 
 					</div>
 				</div>
 			</div>
-			<div class="col-md-offset-0 col-md-10">
+			<div class="col-md-offset-2 col-md-8">
 				Aquí puedes verificar si tu Solicitud de Registro de Opción de Titulación ha sido aprobada.<br>
 				<?php
 				$id_alumno = $_SESSION['id_alumno'];
