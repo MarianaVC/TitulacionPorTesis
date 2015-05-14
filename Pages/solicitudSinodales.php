@@ -41,8 +41,8 @@ if(strcmp($_SESSION["numero_cuenta"],"")==0)
                 <?php require_once 'header.php'; ?>
             </div>
 <div class ='container'>
-                <?php require_once 'navbarAlumno.php'; ?>
-            </div>            
+<?php require_once 'barraAlumno.php'; ?>
+</div>            
 </header>
 
 <div style = "margin: 1% 7% 2% 7%;">
