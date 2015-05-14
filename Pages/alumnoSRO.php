@@ -65,7 +65,6 @@ require_once '../Clases/Notificacion.php';
 							<a href="NuevoSinodal.php" class="dropdown-toggle">
 								<i class="icon-bolt"></i>
 								<span class="menu-text"> Nuevo Sinodal </span>
-								<b class="arrow icon-angle-down"></b>
 							</a>
 						</li>
 						<li>
@@ -76,13 +75,32 @@ require_once '../Clases/Notificacion.php';
 						</li>
 						<li>
 							<a href="RevisarNTT.php" class="dropdown-toggle">
-								<i class="icon-edit"></i>
+								<i class="icon-list"></i>
 								<span class="menu-text"> Revisar NTT </span>
-								<b class="arrow icon-angle-down"></b>
 							</a>
 						</li>
-					</ul>
-					</div><!--Termina el sidebar-->
+						<li>
+							<a href="#" class="dropdown-toggle">
+								<i class="icon-edit"></i>
+								<span class="menu-text"> Exámenes</span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+							<ul class="submenu">
+								<li>
+									<a href="RevisarFechas.php">
+										<i class="icon-double-angle-right"></i>
+										Revisar fechas
+									</a>
+								</li>
+								<li>
+									<a href="RegistrarResultados.php">
+										<i class="icon-double-angle-right"></i>
+										Registrar Resultados
+									</a>
+								</li>
+							</ul>
+						</li>
+					</div>
 					</div><!--Termina Main container-->
 					</div><!--Termina container principal-->
 					<div class="page-content"><!--Comienza page content-->
@@ -167,7 +185,7 @@ require_once '../Clases/Notificacion.php';
 											<tr>
 												<td>Estado de trámite:</td>
 												<td>
-												<strong>Soliciturd de registro de opción realizada <i class ="icon-check"></i></strong>
+													<strong>Soliciturd de registro de opción realizada <i class ="icon-check"></i></strong>
 												</td>
 											</tr>
 											<tr>
@@ -191,5 +209,25 @@ require_once '../Clases/Notificacion.php';
 					<div class="container">
 						<?php require_once'footer.php' ?>
 					</div>
+					<script type="text/javascript">
+					if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+					</script>
+					<script src="assets/js/bootstrap.min.js"></script>
+					<script src="assets/js/bootstrap.min.js"></script>
+					<!--page specific plugin scripts-->
+					<!--[if lte IE 8]>
+					<script src="assets/js/excanvas.min.js"></script>
+					<![endif]-->
+					<script src="assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+					<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+					<script src="assets/js/jquery.slimscroll.min.js"></script>
+					<script src="assets/js/jquery.easy-pie-chart.min.js"></script>
+					<script src="assets/js/jquery.sparkline.min.js"></script>
+					<script src="assets/js/flot/jquery.flot.min.js"></script>
+					<script src="assets/js/flot/jquery.flot.pie.min.js"></script>
+					<script src="assets/js/flot/jquery.flot.resize.min.js"></script>
+					<!--ace scripts-->
+					<script src="assets/js/ace-elements.min.js"></script>
+					<script src="assets/js/ace.min.js"></script>
 				</body>
 			</html>

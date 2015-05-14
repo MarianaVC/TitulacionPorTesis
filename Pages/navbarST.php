@@ -1,3 +1,5 @@
+<script src="assets/js/jquery-1.11.2.js"></script>
+<script src="assets/js/bootstrap.js"></script>
 <?php require_once 'header.php';?>
 <div class="navbar"style="width:1170px" >
 	<div class="navbar-inner">
@@ -55,7 +57,7 @@
 							<li>
 								<li>
 									<a href="#">
-										Ver noticias en detalle									
+										Ver noticias en detalle
 										<i class="icon-arrow-right"></i>
 									</a>
 								</li>
@@ -64,12 +66,12 @@
 						<li class="purple">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="icon-bell-alt icon-animated-bell"></i>
-								<span class="badge badge-important">10</span>
+								<span class="badge badge-important">13</span>
 							</a>
 							<ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-closer">
 								<li class="nav-header">
 									<i class="icon-warning-sign"></i>
-									10 Notificaciones
+									13 Notificaciones
 								</li>
 								<li>
 									<a href="RevisarSRO.php">
@@ -88,6 +90,17 @@
 											<span class="pull-left">
 												<i class="btn btn-mini no-hover btn-info icon-group"></i>
 												5 nuevas NTT
+											</span>
+											<span class="pull-right badge badge-info">+5</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="RevisarFechas.php">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-mini no-hover btn-info icon-calendar"></i>
+												3 nuevas fechas
 											</span>
 											<span class="pull-right badge badge-info">+5</span>
 										</div>
@@ -176,3 +189,9 @@
 						</div><!--/.container-fluid-->
 						</div><!--/.navbar-inner-->
 					</div>
+					<script type="text/javascript">
+					if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+					</script>
+					<script src="assets/js/bootstrap.min.js"></script>
+					<script src="assets/js/bootstrap.min.js"></script>
+					<!--page specific plugin scripts-->

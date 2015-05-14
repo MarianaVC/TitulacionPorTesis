@@ -37,7 +37,7 @@ require_once '../Clases/Notificacion.php';
 				<div class="sidebar" id="sidebar">
 					<ul class="nav nav-list">
 						<li class="active">
-							<a href="PerfilST.php">
+							<a href="index.html">
 								<i class="icon-dashboard"></i>
 								<span class="menu-text"> Inicio </span>
 							</a>
@@ -146,9 +146,6 @@ require_once '../Clases/Notificacion.php';
 			<div class="container">
 				<?php require_once'footer.php' ?>
 			</div>
-			<script type="text/javascript">
-			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-			</script>
 			<script src="assets/js/bootstrap.min.js"></script>
 			<!--page specific plugin scripts-->
 			<!--[if lte IE 8]>
