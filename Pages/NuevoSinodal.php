@@ -100,49 +100,54 @@ require_once '../Clases/Notificacion.php';
 									</li>
 								</ul>
 							</li>
-						</div>
-						<div class="page-content">
-							<div class="row-fluid">
-								<div class="span9">
-									<div class="widget-box" style="padding-left:200px">
-										<div class="row-fluid">
-											<div class="widget-header">
-												<h4>Agregar un nuevo Sinodal a la base de datos</h4>
-												<span class="widget-toolbar">
-													<a href="#" data-action="collapse">
-														<i class="icon-chevron-up"></i>
-													</a>
-													<a href="#" data-action="close">
-														<i class="icon-remove"></i>
-													</a>
-												</span>
-											</div>
-											<div class="widget-body">
-												<div class="widget-main">
-													<div class="row-fluid">
-														<form id="agregarSinodal" method="post" accept-charset="utf-8">
-															<label for="nombre_sinodal" class="sr-only">Nombre</label>
-															<input type="text" id="nombre_sinodal" name='nombre_sinodal' class="form-control" placeholder="Nombre/Nombres">
-															<div id="e_nombre_sinodal"></div>
-															<label for="apaterno_sinodal" class="sr-only">Apellido Paterno</label>
-															<input type="text" id="apaterno_sinodal" name='apaterno_sinodal' class="form-control" placeholder="Apellido Paterno" >
-															<div id="e_apaterno_sinodal"></div>
-															<label for="amaterno_Sinodal" class="sr-only">Apellido Materno</label>
-															<input type="text" id="amaterno_Sinodal" name='amaterno_Sinodal' class="form-control" placeholder="Apellido Materno" >
-															<div id="e_amaterno_Sinodal"></div>
-															<label for="Grado" class="sr-only">Grado de estudios</label>
-															<select name="Grado" id="Grado" multiple placeholder="Grado de estudios">
-																<option value="licenciatura">Licenciatura</option>
-																<option value="Maestria">Maestría</option>
-																<option value="Doctorado">Doctorado</option>
-															</select>
-															<label for="correo_sinodal" class="sr-only">Correo Electrónico</label>
-															<input type="text" id="correo_sinodal" name='correo_sinodal' class="form-control" placeholder="Correo electrónico">
-															<div id="e_correo_sinodal"></div><!-- Aquí se muestran los mensajes de error para este input-->
-															<button id='boton_registro_sinodal' class="btn btn-primary " type="submit">Registrar nuevo Sinodal</button>
-														</form>
-													</div>
-												</div>
+							<li>
+								<a href="AsignarSinodales.php">
+									<i class="icon-double-angle-right"></i>
+								Asignar Sinodales									</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="page-content">
+					<div class="row-fluid">
+						<div class="span9">
+							<div class="widget-box" style="padding-left:200px">
+								<div class="row-fluid">
+									<div class="widget-header">
+										<h4>Agregar un nuevo Sinodal a la base de datos</h4>
+										<span class="widget-toolbar">
+											<a href="#" data-action="collapse">
+												<i class="icon-chevron-up"></i>
+											</a>
+											<a href="#" data-action="close">
+												<i class="icon-remove"></i>
+											</a>
+										</span>
+									</div>
+									<div class="widget-body">
+										<div class="widget-main">
+											<div class="row-fluid">
+												<form id="agregarSinodal" method="post" accept-charset="utf-8">
+													<label for="nombre_sinodal" class="sr-only">Nombre</label>
+													<input type="text" id="nombre_sinodal" name='nombre_sinodal' class="form-control" placeholder="Nombre/Nombres">
+													<div id="e_nombre_sinodal"></div>
+													<label for="apaterno_sinodal" class="sr-only">Apellido Paterno</label>
+													<input type="text" id="apaterno_sinodal" name='apaterno_sinodal' class="form-control" placeholder="Apellido Paterno" >
+													<div id="e_apaterno_sinodal"></div>
+													<label for="amaterno_Sinodal" class="sr-only">Apellido Materno</label>
+													<input type="text" id="amaterno_Sinodal" name='amaterno_Sinodal' class="form-control" placeholder="Apellido Materno" >
+													<div id="e_amaterno_Sinodal"></div>
+													<label for="Grado" class="sr-only">Grado de estudios</label>
+													<select name="Grado" id="Grado" multiple placeholder="Grado de estudios">
+														<option value="licenciatura">Licenciatura</option>
+														<option value="Maestria">Maestría</option>
+														<option value="Doctorado">Doctorado</option>
+													</select>
+													<label for="correo_sinodal" class="sr-only">Correo Electrónico</label>
+													<input type="text" id="correo_sinodal" name='correo_sinodal' class="form-control" placeholder="Correo electrónico">
+													<div id="e_correo_sinodal"></div><!-- Aquí se muestran los mensajes de error para este input-->
+													<button id='boton_registro_sinodal' class="btn btn-primary " type="submit">Registrar nuevo Sinodal</button>
+												</form>
 											</div>
 										</div>
 									</div>
@@ -150,6 +155,8 @@ require_once '../Clases/Notificacion.php';
 							</div>
 						</div>
 					</div>
+				</div>
+				</div>
 				</div>
 				<div class="container">
 					<?php require_once'footer.php' ?>

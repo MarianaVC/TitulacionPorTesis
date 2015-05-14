@@ -98,6 +98,11 @@ require_once '../Clases/Notificacion.php';
 								</li>
 							</ul>
 						</li>
+						<li>
+							<a href="AsignarSinodales.php">
+								<i class="icon-double-angle-right"></i>
+							Asignar Sinodales									</a>
+						</li>
 					</div>
 					<div class="page-content">
 						<div class="row-fluid">

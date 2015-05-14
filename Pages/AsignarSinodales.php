@@ -87,16 +87,22 @@ require_once '../Clases/Notificacion.php';
 								</li>
 							</ul>
 						</li>
+						<li>
+							<a href="AsignarSinodales.php">
+								<i class="icon-double-angle-right"></i>
+							Asignar Sinodales									</a>
+						</li>
 					</div>
 					<div class="page-content">
 						<div class="row-fluid">
-							<div class="span11">
-						<div class="span12 widget-container-span">
+							<div class="span12">
+								<div class="row-fluid">
+									<div class="span12 widget-container-span">
 										<div class="widget-box" style="padding-left:200px" >
 											<div class="widget-header header-color-blue">
 												<h5 class="bigger lighter">
 												<i class="icon-table"></i>
-												Alumnos por registrar resultado de examen
+												Sinodales por asignar
 												</h5>
 												<div class="widget-toolbar widget-toolbar-light no-border">
 												</div>
@@ -119,9 +125,10 @@ require_once '../Clases/Notificacion.php';
 																	Email
 																</th>
 																<th class="hidden-480">Status</th>
-																<th><i class="icon-edit"></i>Aprobó examen
+																<th><i class ="icon-user"></i>Posibles Sinodales</th>
+																<th><i class="icon-edit"></i>Aprobar
 																</th>
-																<th><i class="icon-ban-circle"></i>No Aprobó
+																<th><i class="icon-ban-circle"></i>No Aprobar
 																</th>
 															</tr>
 														</thead>
@@ -130,7 +137,19 @@ require_once '../Clases/Notificacion.php';
 																<td class="">Mariana Valdivia Carbonell</td>
 																<td class="">305176145</td>
 																<td>	<a href="#">marianavc@ciencias.unam.mx</a></td>
-																<td class="hidden-480"><span class="label label-success">Presentó examen</span>
+																<td class="hidden-480"><span class="label label-warning">Esperando Sinodales</span>
+															</td>
+															<td>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Julio Carrillo Valdemar</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl">Alberto Ramíerez Pérez</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Alejandra González Ortega</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Roberto Zarco Fuentes</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Maribel Rodríguez Gómez</span>
 															</td>
 															<td class="">
 																<form>
@@ -147,10 +166,24 @@ require_once '../Clases/Notificacion.php';
 														<tr>
 															<td class=""><a href ="alumnoSRO.php">Juan Alberto Ramírez Mora</a></td>
 															<td class=""> 305176149</td>
+
 															<td><a href="#">juan@email.com</a></td>
 															<td class="hidden-480">
-																<span class="label label-success">Examen Presentado</span>
+																<span class="label label-warning">Esperando Sinodales</span>
 															</td>
+																<td>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Julio Carrillo Valdemar</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl">Alberto Ramíerez Pérez</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Alejandra González Ortega</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Roberto Zarco Fuentes</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Maribel Rodríguez Gómez</span>
+															</td>
+
 															<td class="">
 																<form>
 																	<input"button" type="submit "class="btn btn-success">Aprobar</input"button">
@@ -167,13 +200,27 @@ require_once '../Clases/Notificacion.php';
 															<td class="">305123561</td>
 															<td><a href="#">mari@email.com</a></td>
 															<td class="hidden-480">
-																<span class="label label-success">Examen presentado</span>
+																<span class="label label-warning">Esperando Sinodales</span>
 															</td>
+																<td>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Julio Carrillo Valdemar</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl">Alberto Ramíerez Pérez</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Alejandra González Ortega</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Roberto Zarco Fuentes</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Maribel Rodríguez Gómez</span>
+															</td>
+
 															<td class="">
 																<form>
 																	<input"button" type="submit "class="btn btn-success">Aprobar</input"button">
 																</form>
-															</td>
+														
+
 															<td class="">
 																<form>
 																	<input"button" type="submit " class="btn btn-danger">No Aprobar</input"button">
@@ -185,8 +232,21 @@ require_once '../Clases/Notificacion.php';
 															<td class="">306176145</td>
 															<td><a href="#">lalo@email.com</a></td>
 															<td class="hidden-480">
-																<span class="label label-success">Examen Presentado</span>
+																<span class="label label-warning">Esperando Sinodales</span>
 															</td>
+																<td>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Julio Carrillo Valdemar</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl">Alberto Ramíerez Pérez</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Alejandra González Ortega</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Roberto Zarco Fuentes</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Maribel Rodríguez Gómez</span>
+															</td>
+
 															<td class="">
 																<form>
 																	<input"button" type="submit "class="btn btn-success">Aprobar</input"button">
@@ -203,8 +263,21 @@ require_once '../Clases/Notificacion.php';
 															<td class="">307895623</td>
 															<td><a href="#">james@email.com</a></td>
 															<td class="hidden-480">
-																<span class="label label-warning">NO ASISTIÓ A EXAMEN</span>
+																<span class="label label-warning">Esperando sinodales</span>
 															</td>
+																<td>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Julio Carrillo Valdemar</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl">Alberto Ramíerez Pérez</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Alejandra González Ortega</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Roberto Zarco Fuentes</span>
+																<input name="form-field-checkbox" type="checkbox" />
+																<span class="lbl"> Maribel Rodríguez Gómez</span>
+															</td>
+
 															<td class="">
 																<form>
 																	<input"button" type="submit "class="btn btn-success">Aprobar</input"button">
@@ -221,41 +294,34 @@ require_once '../Clases/Notificacion.php';
 											</div>
 										</div>
 									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div><br></div>
-			<div class="container">
-				<?php require_once'footer.php' ?>
-			</div>
-			<script src="assets/js/bootstrap.min.js"></script>
-			<!--page specific plugin scripts-->
-			<!--[if lte IE 8]>
-			<script src="assets/js/excanvas.min.js"></script>
-			<![endif]-->
-			<script src="assets/js/jquery-ui-1.10.3.custom.min.js"></script>
-			<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-			<script src="assets/js/jquery.slimscroll.min.js"></script>
-			<script src="assets/js/jquery.easy-pie-chart.min.js"></script>
-			<script src="assets/js/jquery.sparkline.min.js"></script>
-			<script src="assets/js/flot/jquery.flot.min.js"></script>
-			<script src="assets/js/flot/jquery.flot.pie.min.js"></script>
-			<script src="assets/js/flot/jquery.flot.resize.min.js"></script>
-			<!--ace scripts-->
-			<script src="assets/js/ace-elements.min.js"></script>
-			<script src="assets/js/ace.min.js"></script>
-		</body>
-	</html>
+		</div>
+	</div>
+</div>
+</div>
+<div class="container">
+<?php require_once'footer.php' ?>
+</div>
+<script src="assets/js/bootstrap.min.js"></script>
+<!--page specific plugin scripts-->
+<!--[if lte IE 8]>
+<script src="assets/js/excanvas.min.js"></script>
+<![endif]-->
+<script src="assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/jquery.slimscroll.min.js"></script>
+<script src="assets/js/jquery.easy-pie-chart.min.js"></script>
+<script src="assets/js/jquery.sparkline.min.js"></script>
+<script src="assets/js/flot/jquery.flot.min.js"></script>
+<script src="assets/js/flot/jquery.flot.pie.min.js"></script>
+<script src="assets/js/flot/jquery.flot.resize.min.js"></script>
+<!--ace scripts-->
+<script src="assets/js/ace-elements.min.js"></script>
+<script src="assets/js/ace.min.js"></script>
+</body>
+</html>
